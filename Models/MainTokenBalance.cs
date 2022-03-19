@@ -1,9 +1,13 @@
 ﻿using Newtonsoft.Json;
 
-namespace BscScanner.Data
+namespace BlockchainAnalysis.Models
 {
-    public class MainTokenBalance {
-        [JsonProperty("account")] public string Account { get; set; }
-        [JsonProperty("balance")] public float Balance { get; set; }
+    public class MainTokenBalance
+    {
+        [JsonProperty("account")] 
+        public string Account { get; set; }
+
+        [JsonProperty("balance")] 
+        public float Balance { get; set; }
     }
 }

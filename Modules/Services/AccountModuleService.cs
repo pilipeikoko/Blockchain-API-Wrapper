@@ -1,19 +1,18 @@
 ﻿using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
-using BlockchainAnalysis.Dtos.Requests;
-using BscScanner.Data;
-using BscScanner.Dtos;
+using BlockchainAnalysis.Chain.Configs;
+using BlockchainAnalysis.Dtos.Responses;
+using BlockchainAnalysis.Models;
+using BlockchainAnalysis.Modules.Abstract;
 
-namespace BlockchainAnalysis.Modules
+namespace BlockchainAnalysis.Modules.Services
 {
     public class AccountModuleService : ModuleService, IAccountModuleService
     {
-        public AccountModuleService(BlockchainConfig blockchainConfig)
+        public AccountModuleService(BlockchainConfig blockchainConfig) : base(blockchainConfig)
         {
-            BlockchainConfig = blockchainConfig;
         }
-
-        protected override BlockchainConfig BlockchainConfig { get; }
 
         public async Task<MainTokenBalance> GetMainTokenBalance(string address, string tag = "latest")
         {
@@ -99,13 +98,64 @@ namespace BlockchainAnalysis.Modules
             return response.Result;
         }
 
-        public async Task<IEnumerable<Transaction>> GetListOfInternalTransactionsByBlockRange(string startBlock = "0", string endBlock = "99999999", string page = "1",
+        public async Task<IEnumerable<Transaction>> GetListOfInternalTransactionsByBlockRange(string startBlock = "0",
+            string endBlock = "99999999", string page = "1",
             string offset = "10", string sort = "asc")
         {
             var url =
                 $"{BlockchainConfig.ApiUrl}?module=account&action=txlistinternal&startblock={startBlock}&endblock={endBlock}&page={page}&offset={offset}&sort={sort}&apikey={BlockchainConfig.ApiKey}";
 
             var response = await Get<TransactionResponse>(url).ConfigureAwait(false);
+
+            return response.Result;
+        }
+
+        public async Task<IEnumerable<Transaction>> GetListOfBep20TokenTransactions(string address,
+            string contractAddress, string startBlock = "0", string endBlock = "99999999",
+            string page = "1", string offset = "10", string sort = "asc")
+        {
+            var url = new StringBuilder($"{BlockchainConfig.ApiUrl}?module=account&action=tokentx");
+            if (address is not null)
+                url.Append($"&address={address}");
+
+            if (contractAddress is not null)
+                url.Append($"&contractaddress={contractAddress}");
+
+            var response =
+                await Get<TransactionResponse>(url
+                    .Append(
+                        $"&startblock={startBlock}&endblock={endBlock}&page={page}&offset={offset}&sort={sort}&apikey={BlockchainConfig.ApiKey}")
+                    .ToString()).ConfigureAwait(false);
+            return response.Result;
+        }
+
+        public async Task<IEnumerable<Transaction>> GetListOfBep721TokenTransactions(string address,
+            string contractAddress, string startBlock = "0", string endBlock = "99999999",
+            string page = "1", string offset = "10", string sort = "asc")
+        {
+            var url = new StringBuilder($"{BlockchainConfig.ApiUrl}?module=account&action=tokennfttx");
+            if (address is not null)
+                url.Append($"&address={address}");
+
+            if (contractAddress is not null)
+                url.Append($"&contractaddress={contractAddress}");
+
+            var response =
+                await Get<TransactionResponse>(url
+                    .Append(
+                        $"&startblock={startBlock}&endblock={endBlock}&page={page}&offset={offset}&sort={sort}&apikey={BlockchainConfig.ApiKey}")
+                    .ToString()).ConfigureAwait(false);
+
+            return response.Result;
+        }
+
+        public async Task<IEnumerable<Block>> GetListOfBlocksValidatedByAddress(string address, string contractAddress,
+            string blockType = "blocks", string page = "1", string offset = "10")
+        {
+            var url =
+                $"{BlockchainConfig.ApiUrl}?module=account&action=getminedblocks&address={address}&blocktype={blockType}&page={page}&offset={offset}&apikey={BlockchainConfig.ApiKey}";
+
+            var response = await Get<BlockResponse>(url).ConfigureAwait(false);
 
             return response.Result;
         }

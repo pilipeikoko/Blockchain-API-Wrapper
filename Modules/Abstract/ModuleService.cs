@@ -1,12 +1,13 @@
-﻿using BscScanner.Data;
-using BscScanner.Dtos;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using BlockchainAnalysis.Chain.Configs;
+using BlockchainAnalysis.Dtos;
+using BlockchainAnalysis.Dtos.Responses;
+using Newtonsoft.Json;
 
-namespace BlockchainAnalysis.Modules
+namespace BlockchainAnalysis.Modules.Abstract
 {
     public abstract class ModuleService : IDisposable
     {
@@ -17,7 +18,12 @@ namespace BlockchainAnalysis.Modules
             Error = (_, ev) => ev.ErrorContext.Handled = true
         };
 
-        protected virtual BlockchainConfig BlockchainConfig { get; }
+        public ModuleService(BlockchainConfig blockchainConfig)
+        {
+            BlockchainConfig = blockchainConfig;
+        }
+
+        protected BlockchainConfig BlockchainConfig { get; }
 
         protected async Task<T> Get<T>(string url)
         {
@@ -29,7 +35,7 @@ namespace BlockchainAnalysis.Modules
                 switch (result.Message)
                 {
                     case "NOTOK":
-                        var error = new BscError();
+                        var error = new ErrorResponse();
                         JsonConvert.PopulateObject(json, error);
                         switch (error.ErrorMessage)
                         {

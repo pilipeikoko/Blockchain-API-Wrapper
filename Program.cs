@@ -1,7 +1,8 @@
-﻿using System;
+﻿using BlockchainAnalysis.Chain;
+using BlockchainAnalysis.Chain.Configs;
+using BlockchainAnalysis.Modules.Services;
+using System;
 using System.Threading.Tasks;
-using BlockchainAnalysis.Modules;
-using BscScanner;
 
 namespace BlockchainAnalysis
 {

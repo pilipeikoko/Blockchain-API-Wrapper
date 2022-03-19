@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BlockchainAnalysis.Modules;
+﻿using BlockchainAnalysis.Chain.Configs;
+using BlockchainAnalysis.Modules.Abstract;
+using BlockchainAnalysis.Modules.Services;
 
-namespace BlockchainAnalysis
+namespace BlockchainAnalysis.Chain
 {
     public abstract class BlockchainScanner
     {

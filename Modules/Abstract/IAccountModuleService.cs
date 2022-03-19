@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using BscScanner.Data;
+using BlockchainAnalysis.Models;
 
-namespace BlockchainAnalysis.Modules
+namespace BlockchainAnalysis.Modules.Abstract
 {
     public interface IAccountModuleService
     {
@@ -17,9 +14,15 @@ namespace BlockchainAnalysis.Modules
         public Task<IEnumerable<MainTokenBalance>> GetMainTokenBalanceMultipleByBlockNumber(IEnumerable<string> addresses, string blockNumber);
 
         public Task<IEnumerable<Transaction>> GetListOfNormalTransactionsByAddress(string address, string startBlock, string endBlock, string page, string offset, string sort);
+
         public Task<IEnumerable<Transaction>> GetListOfInternalTransactionsByAddress(string address, string startBlock, string endBlock, string page, string offset, string sort);
         public Task<IEnumerable<Transaction>> GetListOfInternalTransactionsByHash(string hash);
         public Task<IEnumerable<Transaction>> GetListOfInternalTransactionsByBlockRange(string startBlock, string endBlock, string page, string offset, string sort);
+
+        public Task<IEnumerable<Transaction>> GetListOfBep20TokenTransactions(string address, string contractAddress, string startBlock, string endBlock, string page, string offset, string sort);
+        public Task<IEnumerable<Transaction>> GetListOfBep721TokenTransactions(string address, string contractAddress, string startBlock, string endBlock, string page, string offset, string sort);
+
+        public Task<IEnumerable<Block>> GetListOfBlocksValidatedByAddress(string address, string contractAddress,string blockType, string page, string offset);
 
     }
 }

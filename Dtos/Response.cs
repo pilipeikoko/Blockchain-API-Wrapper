@@ -1,14 +1,13 @@
-﻿using BscScanner.Data;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-namespace BscScanner.Dtos
+namespace BlockchainAnalysis.Dtos
 {
     internal abstract class Response
     {
         [JsonProperty("status")]
         public string Status { get; private set; }
 
-        [JsonProperty("message")] 
+        [JsonProperty("message")]
         public string Message { get; private set; }
     }
 }
