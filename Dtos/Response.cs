@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BlockchainAnalysis.Dtos
+namespace BlockchainScanner.Dtos
 {
     internal abstract class Response
     {

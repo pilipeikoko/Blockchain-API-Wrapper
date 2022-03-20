@@ -1,6 +1,6 @@
-﻿using BlockchainAnalysis.Chain.Configs;
+﻿using BlockchainScanner.Chain.Configs;
 
-namespace BlockchainAnalysis.Chain
+namespace BlockchainScanner.Chain
 { 
     public class BscBlockchainScanner : BlockchainScanner
     {

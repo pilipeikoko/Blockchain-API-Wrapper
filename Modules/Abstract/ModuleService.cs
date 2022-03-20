@@ -2,12 +2,12 @@
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using BlockchainAnalysis.Chain.Configs;
-using BlockchainAnalysis.Dtos;
-using BlockchainAnalysis.Dtos.Responses;
+using BlockchainScanner.Chain.Configs;
+using BlockchainScanner.Dtos;
+using BlockchainScanner.Dtos.Responses;
 using Newtonsoft.Json;
 
-namespace BlockchainAnalysis.Modules.Abstract
+namespace BlockchainScanner.Modules.Abstract
 {
     public abstract class ModuleService : IDisposable
     {

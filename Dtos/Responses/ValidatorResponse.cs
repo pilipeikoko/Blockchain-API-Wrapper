@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using BlockchainAnalysis.Models;
+using BlockchainScanner.Models;
 using Newtonsoft.Json;
 
-namespace BlockchainAnalysis.Dtos.Responses
+namespace BlockchainScanner.Dtos.Responses
 {
-    internal class BscValidatorResponse : Response
+    internal class ValidatorResponse : Response
     {
         [JsonProperty("result")]
         public IEnumerable<Validator> Result { get; set; }

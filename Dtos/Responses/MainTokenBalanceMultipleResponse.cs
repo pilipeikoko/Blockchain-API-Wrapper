@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using BlockchainAnalysis.Models;
+using BlockchainScanner.Models;
 using Newtonsoft.Json;
 
-namespace BlockchainAnalysis.Dtos.Responses
+namespace BlockchainScanner.Dtos.Responses
 {
     internal class MainTokenBalanceMultipleResponse : Response
     {
         [JsonProperty("result")] 
-        public List<MainTokenBalance> Balances { get; set; }
+        public IEnumerable<MainTokenBalance> Balances { get; set; }
     }
 }

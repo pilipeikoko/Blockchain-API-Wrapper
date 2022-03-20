@@ -1,8 +1,8 @@
-﻿using BlockchainAnalysis.Chain.Configs;
-using BlockchainAnalysis.Modules.Abstract;
-using BlockchainAnalysis.Modules.Services;
+﻿using BlockchainScanner.Chain.Configs;
+using BlockchainScanner.Modules.Abstract;
+using BlockchainScanner.Modules.Services;
 
-namespace BlockchainAnalysis.Chain
+namespace BlockchainScanner.Chain
 {
     public abstract class BlockchainScanner
     {

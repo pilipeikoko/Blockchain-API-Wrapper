@@ -1,7 +1,7 @@
-﻿using BlockchainAnalysis.Models;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using BlockchainScanner.Models;
 
-namespace BlockchainAnalysis.Modules.Abstract
+namespace BlockchainScanner.Modules.Abstract
 {
     public interface ITransactionModuleService
     {

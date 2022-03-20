@@ -1,4 +1,4 @@
-﻿namespace BlockchainAnalysis.Chain.Configs
+﻿namespace BlockchainScanner.Chain.Configs
 {
     public abstract class BlockchainConfig
     {

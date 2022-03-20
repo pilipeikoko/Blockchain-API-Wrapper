@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BlockchainAnalysis.Dtos.Responses
+namespace BlockchainScanner.Dtos.Responses
 {
     internal class ErrorResponse : Response
     {

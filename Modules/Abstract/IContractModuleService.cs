@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using BlockchainAnalysis.Models;
+using BlockchainScanner.Models;
 
-namespace BlockchainAnalysis.Modules.Abstract
+namespace BlockchainScanner.Modules.Abstract
 {
     public interface IContractModuleService
     {

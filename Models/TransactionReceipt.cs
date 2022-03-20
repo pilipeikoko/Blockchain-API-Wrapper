@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BlockchainAnalysis.Models
+namespace BlockchainScanner.Models
 {
     internal class TransactionReceipt
     {

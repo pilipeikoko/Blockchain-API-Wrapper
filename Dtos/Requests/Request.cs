@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
+﻿using System.Collections.Generic;
 using System.Text;
 
-namespace BlockchainAnalysis.Dtos.Requests
+namespace BlockchainScanner.Dtos.Requests
 {
     public abstract class Request
     {

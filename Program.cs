@@ -1,23 +1,18 @@
-﻿using BlockchainAnalysis.Chain;
-using BlockchainAnalysis.Chain.Configs;
-using BlockchainAnalysis.Modules.Services;
-using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using BlockchainScanner.Chain.Configs;
+using BlockchainScanner.Modules.Services;
 
-namespace BlockchainAnalysis
+namespace BlockchainScanner
 {
     class Program
     {
         static async Task Main(string[] args)
         {
             BscConfig config = new BscConfig("");
-            BscBlockchainScanner scanner = new BscBlockchainScanner(config);
-            AccountModuleService servce = new AccountModuleService(config);
 
-            float value = (await servce.GetMainTokenBalance("0x6BE43Dc58e46E65dac001544A35e0A95de59456B")).Balance;
+            AccountModuleService accountModule = new AccountModuleService(config);
 
-
-
+            double balance = await accountModule.GetMainTokenBalance("0x60d573D6F01869e1D69f71a468CE4eD246111290");
         }
     }
 }

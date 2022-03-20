@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using BlockchainAnalysis.Chain.Configs;
-using BlockchainAnalysis.Dtos.Responses;
-using BlockchainAnalysis.Models;
-using BlockchainAnalysis.Modules.Abstract;
+using BlockchainScanner.Chain.Configs;
+using BlockchainScanner.Dtos.Responses;
+using BlockchainScanner.Models;
+using BlockchainScanner.Modules.Abstract;
 
-namespace BlockchainAnalysis.Modules.Services
+namespace BlockchainScanner.Modules.Services
 {
     public class AccountModuleService : ModuleService, IAccountModuleService
     {
@@ -14,18 +14,14 @@ namespace BlockchainAnalysis.Modules.Services
         {
         }
 
-        public async Task<MainTokenBalance> GetMainTokenBalance(string address, string tag = "latest")
+        public async Task<double> GetMainTokenBalance(string address, string tag = "latest")
         {
             var url =
                 $"{BlockchainConfig.ApiUrl}?module=account&action=balance&address={address}&tag={tag}&apikey={BlockchainConfig.ApiKey}";
 
             var response = await Get<MainTokenBalanceResponse>(url);
 
-            return new MainTokenBalance
-            {
-                Balance = float.Parse(response.Result),
-                Account = address
-            };
+            return double.Parse(response.Result);
         }
 
         public async Task<IEnumerable<MainTokenBalance>> GetMainTokenMultipleBalance(IEnumerable<string> addresses,
@@ -34,6 +30,7 @@ namespace BlockchainAnalysis.Modules.Services
             var url = $"{BlockchainConfig.ApiUrl}?module=account&action=balancemulti&address="
                       + string.Join(",", addresses)
                       + $"&tag={tag}&apikey={BlockchainConfig.ApiKey}";
+
             var response = await Get<MainTokenBalanceMultipleResponse>(url).ConfigureAwait(false);
 
             return response.Balances;

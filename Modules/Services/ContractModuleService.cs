@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using BlockchainAnalysis.Chain.Configs;
-using BlockchainAnalysis.Dtos.Responses;
-using BlockchainAnalysis.Models;
-using BlockchainAnalysis.Modules.Abstract;
+using BlockchainScanner.Chain.Configs;
+using BlockchainScanner.Dtos.Responses;
+using BlockchainScanner.Models;
+using BlockchainScanner.Modules.Abstract;
 
-namespace BlockchainAnalysis.Modules.Services
+namespace BlockchainScanner.Modules.Services
 {
     public class ContractModuleService : ModuleService, IContractModuleService
     {

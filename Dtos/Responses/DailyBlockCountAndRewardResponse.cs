@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using BlockchainAnalysis.Models;
+using BlockchainScanner.Models;
 using Newtonsoft.Json;
 
-namespace BlockchainAnalysis.Dtos.Responses
+namespace BlockchainScanner.Dtos.Responses
 {
     internal class DailyBlockCountAndRewardResponse : Response
     {
         [JsonProperty("result")] 
-        public IEnumerable<DailyBlockCountAndReward> Result { get; private set; }
+        public IEnumerable<DailyBlockCountAndReward> Result { get; set; }
     }
 }

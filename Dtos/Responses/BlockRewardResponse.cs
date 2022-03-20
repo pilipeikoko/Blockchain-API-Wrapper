@@ -1,7 +1,7 @@
-﻿using BlockchainAnalysis.Models;
+﻿using BlockchainScanner.Models;
 using Newtonsoft.Json;
 
-namespace BlockchainAnalysis.Dtos.Responses
+namespace BlockchainScanner.Dtos.Responses
 {
     internal class BlockRewardResponse : Response
     {

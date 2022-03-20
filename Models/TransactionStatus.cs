@@ -1,4 +1,4 @@
-﻿namespace BlockchainAnalysis.Models
+﻿namespace BlockchainScanner.Models
 {
     public enum TransactionStatus
     {

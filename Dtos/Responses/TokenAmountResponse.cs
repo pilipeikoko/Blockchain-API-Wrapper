@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace BlockchainAnalysis.Dtos.Responses
+namespace BlockchainScanner.Dtos.Responses
 {
-    internal class BscTokenTotalSupplyResponse : Response
+    internal class TokenAmountResponse : Response
     {
         [JsonProperty("result")]
         public string Result { get; set; }
