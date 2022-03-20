@@ -24,8 +24,9 @@ namespace BlockchainScanner.Tests.Modules
         public AccountModuleServiceTest()
         {
             BscConfig config = new BscConfig(ApiKey);
+            EthereumConfig ethConfig = new EthereumConfig("");
 
-            _accountService = new AccountModuleService(config);
+            _accountService = new AccountModuleService(ethConfig);
         }
 
 
