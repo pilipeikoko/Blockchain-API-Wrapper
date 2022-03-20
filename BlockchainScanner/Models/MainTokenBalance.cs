@@ -1,13 +1,19 @@
-﻿using Newtonsoft.Json;
+﻿using BlockchainScanner.Utils;
+using Newtonsoft.Json;
 
 namespace BlockchainScanner.Models
 {
     public class MainTokenBalance
     {
-        [JsonProperty("account")] 
-        public string Account { get; set; }
+        private double _balance;
 
-        [JsonProperty("balance")] 
-        public float Balance { get; set; }
+        [JsonProperty("account")] public string Account { get; set; }
+
+        [JsonProperty("balance")]
+        public double Balance
+        {
+            get => _balance;
+            set => _balance = WeiToMainTokenConverter.Convert(value);
+        }
     }
 }

@@ -5,6 +5,7 @@ using BlockchainScanner.Chain.Configs;
 using BlockchainScanner.Dtos.Responses;
 using BlockchainScanner.Models;
 using BlockchainScanner.Modules.Abstract;
+using BlockchainScanner.Utils;
 
 namespace BlockchainScanner.Modules.Services
 {
@@ -21,7 +22,7 @@ namespace BlockchainScanner.Modules.Services
 
             var response = await Get<MainTokenBalanceResponse>(url);
 
-            return double.Parse(response.Result);
+            return WeiToMainTokenConverter.Convert(response.Result);
         }
 
         public async Task<IEnumerable<MainTokenBalance>> GetMainTokenMultipleBalance(IEnumerable<string> addresses,
@@ -107,7 +108,7 @@ namespace BlockchainScanner.Modules.Services
             return response.Result;
         }
 
-        public async Task<IEnumerable<Transaction>> GetListOfBep20TokenTransactions(string address,
+        public async Task<IEnumerable<Transaction>> GetListOfTokenTransactions(string address,
             string contractAddress, string startBlock = "0", string endBlock = "99999999",
             string page = "1", string offset = "10", string sort = "asc")
         {
@@ -126,7 +127,7 @@ namespace BlockchainScanner.Modules.Services
             return response.Result;
         }
 
-        public async Task<IEnumerable<Transaction>> GetListOfBep721TokenTransactions(string address,
+        public async Task<IEnumerable<Transaction>> GetListOfNft721TokenTransactions(string address,
             string contractAddress, string startBlock = "0", string endBlock = "99999999",
             string page = "1", string offset = "10", string sort = "asc")
         {
