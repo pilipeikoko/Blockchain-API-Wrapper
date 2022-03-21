@@ -140,7 +140,7 @@ namespace BlockchainScanner.Modules.Abstract
         /// <summary>
         /// Returns the list of blocks validated by an address.
         /// </summary>
-        /// <param name="address">The string representing the address to check for balance</param>
+        /// <param name="address">the string representing the address to check for balance</param>
         /// <param name="contractAddress">The string representing the token contract address to check for balance</param>
         /// <param name="blockType">The string pre-defined block type, blocks for canonical blocks </param>
         /// <param name="page">The integer page number, if pagination is enabled</param>

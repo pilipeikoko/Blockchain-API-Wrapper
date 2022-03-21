@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using BlockchainScanner.Chain.Configs;
 using BlockchainScanner.Dtos.Responses;
@@ -23,14 +24,16 @@ namespace BlockchainScanner.Modules.Services
             return response.Result;
         }
 
-        public async Task<IEnumerable<Contract>> GetContractSourceCodeByAddress(string contractAddress)
+        public async Task<Contract> GetContractSourceCodeByAddress(string contractAddress)
         {
             var url =
                 $"{BlockchainConfig.ApiUrl}?module=contract&action=getsourcecode&address={contractAddress}&apikey={BlockchainConfig.ApiKey}";
 
+            //Returned in array, taking first.
+            //I don't see sense of requesting more than one contract so
             var response = await Get<SourceCodeResponse>(url).ConfigureAwait(false);
 
-            return response.Result;
+            return response.Result.FirstOrDefault();
         }
     }
 }

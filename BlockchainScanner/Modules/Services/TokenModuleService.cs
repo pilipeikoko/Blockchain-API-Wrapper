@@ -5,6 +5,7 @@ using BlockchainScanner.Chain.Configs;
 using BlockchainScanner.Dtos.Responses;
 using BlockchainScanner.Models;
 using BlockchainScanner.Modules.Abstract;
+using BlockchainScanner.Utils;
 
 namespace BlockchainScanner.Modules.Services
 {
@@ -21,7 +22,8 @@ namespace BlockchainScanner.Modules.Services
 
             var response = await Get<TokenAmountResponse>(url).ConfigureAwait(false);
 
-            return double.Parse(response.Result);
+            //TODO: not sure converting is needed here
+            return WeiToMainTokenConverter.Convert(response.Result);
         }
 
         public async Task<double> GetTokenCirculatingSupplyByContractAddress(string contractAddress)
@@ -31,7 +33,7 @@ namespace BlockchainScanner.Modules.Services
 
             var response = await Get<TokenAmountResponse>(url).ConfigureAwait(false);
 
-            return double.Parse(response.Result);
+            return WeiToMainTokenConverter.Convert(response.Result);
         }
 
         public async Task<double> GetTokenBalanceByContractAddress(string address, string contractAddress, string tag = "latest")
